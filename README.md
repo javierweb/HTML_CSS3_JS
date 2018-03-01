@@ -1,3 +1,6 @@
 Practica HTML_CSS3_JS
 
-Creación de una pagina web con mí CV.
+Creaciï¿½n de una pagina web con mï¿½ CV.
+
+Arrancar server.py
+Localhost:8000

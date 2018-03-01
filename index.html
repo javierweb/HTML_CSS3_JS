@@ -11,8 +11,9 @@
     
    
     <link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans|Merienda+One" rel="stylesheet">
-    <script src="Documento%20sin%20t%C3%ADtulo%20Archivos/jquery-1.js"></script>
-<script src="Documento%20sin%20t%C3%ADtulo%20Archivos/jquery.js"></script>
+   
+    <script src="./jquery/jquery-1.js" type="text/javascript"></script>
+    <script src="./jquery/jquery.js" type="text/javascript"></script>   
 
   
 </head>
@@ -23,11 +24,11 @@
     <nav id="menu" class="navbar_menu">
                 <ul class="navbar_list">
                     <il class="navbar_item navbar_item--active"><a href="#">Inicio</a></il>
-                    <il class="navbar_item"><a href="#quien_soy" class="smooth"></a></il>-->
+                   <!-- <il class="navbar_item"><a href="#quien_soy" class="smooth"></a></il>-->
                     <il class="navbar_item"><a href="#estudios" class="smooth">Quien Soy/Estudios</a></il>
                     <il class="navbar_item"><a href="#experiencia" class="smooth">Experiencia</a></il>
                     <il class="navbar_item"><a href="#sobre_mi" class="smooth">Sobre mí</a></il>
-                    <il class="navbar_item"><a href="contacto.html" >Contacto</a></il>
+                    <il class="navbar_item"><a href="contacto.html" name="contacto" id="#contacto">Contacto</a></il>
                 </ul>
                 <div class="header_image"> <!--si meto div dentro nav tengo la foto en el menu-->
                     <a href="imagen"><img src="images/yo.png" alt="Mifoto"></a>
@@ -36,7 +37,7 @@
     <main id="container" class="contenido">
             <section id="quien_soy" class="who-I-am">
                 <div id="quien_soy_text" class="quiensoy-info clearfix">
-                   <header class="header"><h2 id="text_name" class="texto_nombre">Javier Bautista <br><span class="text_name_sub">Curriculum Vitae</span></h2>
+                   <header class="header" name="header"><h2 id="text_name" class="texto_nombre">Javier Bautista <br><span class="text_name_sub">Curriculum Vitae</span></h2>
                 </header>
                    <img id="imagenportada" class="portadaimagen" src="images/blueorange.jpg" alt="Foto de portada">
 
@@ -47,7 +48,7 @@
                             </span>         
                 </div>   
             </section> 
-
+            
             <section  id="estudios"class="contenido_study">
                 
                 <div class="study_info">

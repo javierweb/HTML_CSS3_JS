@@ -8,7 +8,6 @@ for (var i = 0; i < navbarItems.length; i++) {
     this.classList.add("navbar_item--active");
 
     if (goTo.length === 2) {
-    
       event.preventDefault();
       var sectionToGo = goTo[goTo.length - 1];
       var elementToGo = getElementToScroll(sectionToGo);
@@ -35,77 +34,95 @@ function getElementToScroll(id) {
 }
 
 function scrollToElement(element) {
-    var jump = parseInt(element.getBoundingClientRect().top * 0.2);
-    document.body.scrollTop += jump;
-    document.documentElement.scrollTop += jump;
+  var jump = parseInt(element.getBoundingClientRect().top * 0.2);
+  document.body.scrollTop += jump;
+  document.documentElement.scrollTop += jump;
   
-    if (!element.lastJump || element.lastJump > Math.abs(jump)) {
-      element.lastJump = Math.abs(jump);
-      setTimeout(function() {
-        scrollToElement(element);
-      }, 25);
+  if (!element.lastJump || element.lastJump > Math.abs(jump)) {
+    element.lastJump = Math.abs(jump);
+    setTimeout(function() {
+      scrollToElement(element);
+    }, 25);
+  } else {
+    element.lastJump = null;
+  }
+}
+
+var acumulativeOffset = function(element) {
+  var top = 0;
+  
+  do {
+    top += element.offsetTop || 0;
+    element = element.offsetParent;
+  } while (element);
+  
+  return top - 50;
+};
+  
+var quienSoyOffset = acumulativeOffset(document.getElementById("quien_soy"));
+var estudiosOffset = acumulativeOffset(document.getElementById("estudios"));
+var experienciaOffset = acumulativeOffset(document.getElementById("experiencia"));
+var sobreMiOffset = acumulativeOffset(document.getElementById("sobre_mi"));
+var contactoOffset = acumulativeOffset(document.getElementsByClassName("contacto"));
+  
+window.addEventListener("scroll", changeMenuStyle);
+  
+var previous;
+  
+function changeMenuStyle(event) {
+  var pageOffset = window.pageYOffset;
+  
+  if (pageOffset >= 0 && pageOffset < quienSoyOffset) {
+    if (!previous || previous !== 1) {
+      previous = 1;
     } else {
-      element.lastJump = null;
+      return false;
     }
-  }
   
-  var acumulativeOffset = function(element) {
-    var top = 0;
-  
-    do {
-      top += element.offsetTop || 0;
-      element = element.offsetParent;
-    } while (element);
-  
-    return top - 50;
-  };
-  
-  var quienSoyOffset = acumulativeOffset(document.getElementById("quien_soy"));
-  var estudiosOffset = acumulativeOffset(document.getElementById("estudios"));
-  var experienciaOffset = acumulativeOffset(document.getElementById("esperiencia"));
-  var sobreMiOffset = acumulativeOffset(document.getElementById("sobre_mi"));
-  var contactoOffset = acumulativeOffset(document.getElementById("contacto"));
-  
-  window.addEventListener("scroll", changeMenuStyle);
-  
-  var previous;
-  
-  function changeMenuStyle(event) {
-    var pageOffset = window.pageYOffset;
-  
-    if (pageOffset >= 0 && pageOffset < quienSoyOffset) {
-      if (!previous || previous !== 1) {
-        previous = 1;
-      } else {
-        return false;
-      }
-  
-      deleteActiveClass();
-      setActiveItem("a[href='#']");
-    } else if (pageOffset >= quienSoyOffset && pageOffset < estudiosOffset) {
-      if (!previous || previous !== 2) {
-        previous = 2;
-      } else {
-        return false;
-      }
-  
-      deleteActiveClass();
-      setActiveItem("a[href$='quien_soy']");
-    } else if (pageYOffset >= sobreMiOffset && pageYOffset < experienciaOffset) {
-      if (!previous || previous !== 3) {
-        previous = 3;
-      } else {
-        return false;
-      }
-  
-      deleteActiveClass();
-      setActiveItem("a[href$='estudios']");
+    deleteActiveClass();
+    setActiveItem("a[href='#']");
+  } else if (pageOffset >= quienSoyOffset && pageOffset < estudiosOffset) {
+    if (!previous || previous !== 2) {
+      previous = 2;
+    } else {
+      return false;
     }
-  }
   
-  function setActiveItem(selector) {
-    document
-      .querySelector(selector)
-      .parentNode.classList.add("navbar_item--active");
+   /* deleteActiveClass();
+    setActiveItem("a[href$='quien_soy']");
+  } else if (pageYOffset >= estudiosOffset && pageYOffset < experienciaOffset) {
+    if (!previous || previous !== 3) {
+      previous = 3;
+    } else {
+      return false;
+    }*/
+  
+    deleteActiveClass();
+    setActiveItem("a[href$='estudios']");
+  } else if (pageYOffset >= experienciaOffset && pageYOffset < sobreMiOffset) {
+    if (!previous || previous !== 4) {
+      previous = 4;
+    } else {
+      return false;
+    }
+
+    deleteActiveClass();
+    setActiveItem("a[href$='experiencia']");
+  } else if (pageYOffset >= sobreMiOffset && pageYOffset < contactoOffset) {
+    if (!previous || previous !== 5) {
+      previous = 5;
+    } else {
+      return false;
+    }
+
+    deleteActiveClass();
+    setActiveItem("a[href$='sobre_mi']");
   }
+}
+  
+function setActiveItem(selector) {
+  document
+    .querySelector(selector)
+    .parentNode.classList.add("navbar_item--active");
+}
   

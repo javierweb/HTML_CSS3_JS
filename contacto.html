@@ -37,11 +37,11 @@
 <body>
     <nav id="menu" class="navbar_menu">
         <ul class="navbar_list">
-            <il class="navbar_item"><a href="index2.html#inicio" class="smooth">Inicio</a></il>
-            <il class="navbar_item"><a href="index2.html#estudios" class="smooth">Quien Soy/Estudios</a></il>
-            <il class="navbar_item"><a href="index2.html#experiencia" class="smooth">Experiencia</a></il>
-            <il class="navbar_item"><a href="index2.html#sobre_mi" class="smooth">Sobre mí</a></il>
-            <il class="navbar_item navbar_item--active"><a href="#" >Contacto</a></il>
+            <il class="navbar_item"><a href="index.html#inicio" class="smooth">Inicio</a></il>
+            <il class="navbar_item"><a href="index.html#estudios" class="smooth">Quien Soy/Estudios</a></il>
+            <il class="navbar_item"><a href="index.html#experiencia" class="smooth">Experiencia</a></il>
+            <il class="navbar_item"><a href="index.html#sobre_mi" class="smooth">Sobre mí</a></il>
+            <il class="navbar_item navbar_item--active"><a href="#" name="contacto" >Contacto</a></il>
         </ul>
         <div class="header_image"> <!--si meto div entro nav tengo la foto en el menu-->
             <a href="imagen"><img src="images/yo.png" alt="Mifoto"></a>
@@ -50,12 +50,15 @@
 <main class="container">
     <section class="section-container">
         
-            <div class="row">
+        <div class="row">
             <div class="col-6">
-                <div id="googleMap"></div>
+                <div id="googleMap">
+
+                </div>
             </div>
             <div class="col-6">
-                <div class="form" id="contacta_nosotros"><h2 class="contact_h2">Contacta con nosotros</h2>
+              <div class="form-row">
+                <div class="form" name= "contacto"><h2 class="contact_h2">Contacta con nosotros</h2>
                     <form name="contacto" method="get" novalidate>
                         <div class="form-row">
                             <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
@@ -65,28 +68,29 @@
                         
                         <div class="form-row"><h2>Como me has conocido?</h2>
                             <label for="tipo_conocido1">Google</label>
-                            <input type="radio" id="Google" name="como_me_has_conocido" value="Google" required>
+                            <input type="radio" id="tipo_conocido1" name="tipo_conocido" value="Google" required>
 
                             <label for="tipo_conocido2">Facebook</label>
-                            <input type="radio" id="facebook" name="como_me_has_conocido" value="Facebook" required><!--campo no necesario quizas-->
+                            <input type="radio" id="tipo_conocido2" name="tipo_conocido" value="Facebook" required>
 
-                            <label for="tipo_conocido3">Instagrame</label>
-                            <input type="radio" id="Instagrame" name="como_me_has_conocido" value="Instagrame" required>
+                            <label for="tipo_conocido3">Instagram</label>
+                            <input type="radio" id="tipo_conocido3" name="tipo_conocido" value="Instagram" required>
                             <label for="tipo_conocido4">Otros</label>
-                            <input type="radio" id="otros" name="como_me_has_conocido" value="Otros" required>
-                            <input type="text" name="como_me_has_conocido" id="otros_campo" placeholder="Otros" required>
+                            <input type="radio" id="tipo_conocido4" name="tipo_conocido" value="Otros" required>
+                            <input type="text" name="tipo_conocido" id="tipo_conocido4" placeholder="Otros" required>
                            
                         </div>
                         
                         <div class="form-row">
-                            <label for="mensaje">Comentario</label>
-                            <input type="textarea" id="comentario" maxlength="150" name="comentario"  required>
+                            <label for="comentario">Comentario</label>
+                            <input type="textarea" id="comentario" textarea maxlength="150" onkeyup="palabras" name="comentario"  required>
                         </div>
                         <div class="form-row">
-                            <button type="submit" name="enviar" id="enviar">Enviar</button>
+                            <button type="submit" id="enviar">Enviar</button>
                         </div>
                     </form>
                 </div>
+              </div>
             </div>
         </div>
     </section>

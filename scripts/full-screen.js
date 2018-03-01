@@ -1,4 +1,4 @@
-var video = document.getElementById("video");
+var video = document.getElementById("about-me_video");
 
 video.addEventListener("click", function(event) {
   launchFullScreen(this);
