@@ -1,9 +1,8 @@
-var form = document.getElementsByName("contacto")[0];
+var form = document.getElementsByClassName("form")[0];
 
 var nombreInput = document.getElementById("nombre");
 var emailInput = document.getElementById("email");
 var telefonoInput = document.getElementById("telefono");
-//var conocidoInput = document.getElementById("conocido");
 var comentarioInput = document.getElementById ("comentario");
 var submitButton = document.getElementById("enviar");
 
